@@ -100,7 +100,7 @@ for filename in sorted(os.listdir(past_workouts_folder)):
             # find the exercise object by name
             exercise_obj = None
             for ex in all_exercises:
-                if ex.name == ex_data["exercise_name"]:
+                if ex.name == ex_data["exercise_name"].lower():
                     exercise_obj = ex
                     break
 
@@ -185,9 +185,9 @@ def add_workout_session():
                 print("  Invalid input for reps or weight. Please enter numbers only.")
         parameter_not_valid = True
 
-        grip = input("  Enter grip [neutral / reverse...] (optional, press Enter to skip): ")
+        grip = input("  Enter grip [neutral / overhand / underhand...] (optional, press Enter to skip): ")
         execution = input("  Enter execution [simultaneous / sequential or custom] (optional, press Enter to skip): ")
-        equipment = input("  Enter equipment [dumbell / barbell / cable / machine / freeweight...] (optional, press Enter to skip): ")
+        equipment = input(f"  Enter equipment [dumbell / barbell / cable / machine / freeweight / smith...] (Leave blank to choose default - {exercise_obj.usual_equipment[0]}): ")
         
         exercise_data = {
             "exercise_name": exercise_name,
@@ -195,11 +195,13 @@ def add_workout_session():
             "weight": weight
         }
         if grip:
-            exercise_data["grip"] = grip
+            exercise_data["grip"] = grip.lower()
         if execution:
-            exercise_data["execution"] = execution
+            exercise_data["execution"] = execution.lower()
         if equipment:
-            exercise_data["equipment"] = equipment
+            exercise_data["equipment"] = equipment.lower()
+        else:
+            exercise_data["equipment"] = exercise_obj.usual_equipment[0]
         
         exercises_performed.append(exercise_data)
     
@@ -208,10 +210,10 @@ def add_workout_session():
 
     
     session_data = {
-        "date": date,
+        "date": date.strftime('%Y-%m-%d'),
         "exercises": exercises_performed
     }
-    print(session_data)
+
 
     filename = f"{date.strftime('%Y-%m-%d')}.txt"
     filepath = os.path.join(past_workouts_folder, filename)

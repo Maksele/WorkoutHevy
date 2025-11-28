@@ -1,5 +1,5 @@
 {
-    "date": "2024-11-09",
+    "date": "2025-11-16",
     "exercises": [
         {
             "exercise_name": "Bench Press",
@@ -11,7 +11,7 @@
             "weight": [
                 50,
                 50,
-                55
+                60
             ]
         },
         {
@@ -28,18 +28,17 @@
             ]
         },
         {
-            "exercise_name": "Preacher Curl",
+            "exercise_name": "Deadlift",
             "reps": [
                 8,
-                8,
-                8
+                6,
+                4
             ],
             "weight": [
-                10,
-                12,
-                14
-            ],
-	    "grip": "reverse"
+                100,
+                120,
+                140
+            ]
         },
         {
             "exercise_name": "Overhead Press",
@@ -52,8 +51,7 @@
                 30,
                 35,
                 40
-            ],
-	    "equipment": "dumbbell"
+            ]
         }
     ]
 }

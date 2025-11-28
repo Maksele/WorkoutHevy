@@ -87,7 +87,7 @@ class Exercise:
     """Base class for all exercises (provides consistent __repr__)"""
 
     def __repr__(self):
-        return f"{self.__class__.__name__}(equipment='{self.equipment}', grip='{self.grip}', execution='{self.execution}')"
+        return f"{self.__class__.__name__}"
 
     def train(self, date, reps, weight):
         for m in self.muscles:
@@ -101,7 +101,7 @@ class Exercise:
     
 
 class BackExtension(Exercise):
-    usual_equipment = ["bodyweight", "dumbell", "barbell", "machine"]
+    usual_equipment = ["dumbell", "bodyweight", "barbell", "machine"]
 
     def __init__(self, equipment="dumbell", grip="neutral", execution="simultaneous"):
         self.name = "back extension"
@@ -137,7 +137,7 @@ class BicepCurl(Exercise):
 
 
 class CalfRaise(Exercise):
-    usual_equipment = ["machine", "barbell", "dumbbell", "smith"]
+    usual_equipment = ["smith", "machine", "barbell", "dumbbell"]
 
     def __init__(self, equipment="machine", grip="standard", execution="simultaneous"):
         self.name = "calf raise"
@@ -149,7 +149,7 @@ class CalfRaise(Exercise):
 
 
 class ChestFly(Exercise):
-    usual_equipment = ["dumbbell", "machine", "cable"]
+    usual_equipment = [ "machine", "dumbbell", "cable"]
 
     def __init__(self, equipment="dumbbell", grip="overhand", execution="simultaneous"):
         self.name = "chest fly"
@@ -161,7 +161,7 @@ class ChestFly(Exercise):
 
 
 class Deadlift(Exercise):
-    usual_equipment = ["barbell", "dumbbell"]
+    usual_equipment = ["barbell", "dumbbell", "smith"]
 
     def __init__(self, equipment="barbell", grip="overhand", execution="simultaneous"):
         self.name = "deadlift"
@@ -173,7 +173,7 @@ class Deadlift(Exercise):
 
 
 class HipThrust(Exercise):
-    usual_equipment = ["barbell", "machine", "bodyweight"]
+    usual_equipment = ["barbell", "machine", "dumbell", "bodyweight"]
 
     def __init__(self, equipment="barbell", grip="overhand", execution="simultaneous"):
         self.name = "hip thrust"
@@ -185,7 +185,7 @@ class HipThrust(Exercise):
 
 
 class InclineBenchPress(Exercise):
-    usual_equipment = ["barbell", "dumbbell", "machine", "smith"]
+    usual_equipment = ["dumbbell", "barbell", "smith", "machine"]
 
     def __init__(self, equipment="barbell", grip="overhand", execution="simultaneous"):
         self.name = "incline bench press"
@@ -197,7 +197,7 @@ class InclineBenchPress(Exercise):
 
 
 class LateralRaise(Exercise):
-    usual_equipment = ["dumbbell", "cable", "machine"]
+    usual_equipment = ["cable", "dumbbell", "machine"]
 
     def __init__(self, equipment="cable", grip="overhand", execution="simultaneous"):
         self.name = "lateral raise"
@@ -221,7 +221,7 @@ class LegPress(Exercise):
 
 
 class Lunge(Exercise):
-    usual_equipment = ["dumbbell", "barbell", "bodyweight"]
+    usual_equipment = ["dumbbell", "bodyweight", "barbell"]
 
     def __init__(self, equipment="dumbbell", grip="neutral", execution="sequential"):
         self.name = "lunge"
@@ -233,7 +233,7 @@ class Lunge(Exercise):
 
 
 class OverheadPress(Exercise):
-    usual_equipment = ["dumbbell", "barbell", "machine", "smith"]
+    usual_equipment = ["machine", "dumbbell", "barbell" , "smith"]
 
     def __init__(self, equipment="dumbbell", grip="overhand", execution="simultaneous"):
         self.name = "overhead press"
@@ -269,10 +269,10 @@ class Pulldown(Exercise):
 
 
 class PullUp(Exercise):
-    usual_equipment = ["bodyweight", "assisted machine"]
+    usual_equipment = ["bodyweight", "assisted", "weighted"]
 
     def __init__(self, equipment="bodyweight", grip="overhand", execution="simultaneous"):
-        self.name = "pull-up"
+        self.name = "pullup"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -281,7 +281,7 @@ class PullUp(Exercise):
 
 
 class ReverseFly(Exercise):
-    usual_equipment = ["cable", "machine", "dumbbell"]
+    usual_equipment = ["machine", "cable", "dumbbell"]
 
     def __init__(self, equipment="cable", grip="overhand", execution="simultaneous"):
         self.name = "reverse fly"
@@ -305,10 +305,10 @@ class RomanianDeadlift(Exercise):
 
 
 class SeatedRow(Exercise):
-    usual_equipment = ["dumbbell", "cable", "machine"]
+    usual_equipment = ["cable", "machine", "dumbbell"]
 
     def __init__(self, equipment="dumbbell", grip="neutral", execution="sequential"):
-        self.name = "dumbbell row"
+        self.name = "seated row"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -317,7 +317,7 @@ class SeatedRow(Exercise):
 
 
 class ShoulderPress(Exercise):
-    usual_equipment = ["barbell", "dumbbell", "machine", "smith"]
+    usual_equipment = ["machine", "dumbbell", "barbell", "smith"]
 
     def __init__(self, equipment="dumbell", grip="overhand", execution="simultaneous"):
         self.name = "shoulder press"
@@ -341,7 +341,7 @@ class Shrugs(Exercise):
 
 
 class Squat(Exercise):
-    usual_equipment = ["barbell", "dumbbell", "machine", "smith"]
+    usual_equipment = ["barbell", "dumbbell", "smith", "bodyweight"]
 
     def __init__(self, equipment="barbell", grip="overhand", execution="simultaneous"):
         self.name = "squat"

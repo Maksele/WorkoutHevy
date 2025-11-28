@@ -1,0 +1,159 @@
+{
+    "date": "2025-11-28",
+    "exercises": [
+        {
+            "exercise_name": "seated row",
+            "reps": [
+                4,
+                12,
+                8,
+                10,
+                8,
+                12
+            ],
+            "weight": [
+                20.0,
+                55.0,
+                55.0,
+                50.0,
+                50.0,
+                30.0
+            ],
+            "grip": "neutral",
+            "execution": "simultaneous",
+            "equipment": "cable"
+        },
+        {
+            "exercise_name": "lateral raise",
+            "reps": [
+                2,
+                10,
+                8,
+                12,
+                9,
+                12
+            ],
+            "weight": [
+                5.0,
+                10.0,
+                10.0,
+                5.0,
+                5.0,
+                3.0
+            ],
+            "grip": "overhand",
+            "execution": "sequential",
+            "equipment": "cable"
+        },
+        {
+            "exercise_name": "bench press",
+            "reps": [
+                15,
+                12,
+                8,
+                10,
+                8
+            ],
+            "weight": [
+                60.0,
+                60.0,
+                60.0,
+                50.0,
+                40.0
+            ],
+            "grip": "overhand",
+            "execution": "simultaneous",
+            "equipment": "barbell"
+        },
+        {
+            "exercise_name": "reverse fly",
+            "reps": [
+                8,
+                8,
+                8,
+                12,
+                1
+            ],
+            "weight": [
+                25.0,
+                20.0,
+                15.0,
+                15.0,
+                15.0
+            ],
+            "grip": "overhand",
+            "execution": "sequential",
+            "equipment": "machine"
+        },
+        {
+            "exercise_name": "pulldown",
+            "reps": [
+                10,
+                8,
+                12,
+                8,
+                8
+            ],
+            "weight": [
+                40.0,
+                35.0,
+                30.0,
+                30.0,
+                25.0
+            ],
+            "grip": "overhand wide",
+            "execution": "simultaneous",
+            "equipment": "cable"
+        },
+        {
+            "exercise_name": "shoulder press",
+            "reps": [
+                10,
+                8,
+                12,
+                8,
+                8
+            ],
+            "weight": [
+                55.0,
+                55.0,
+                55.0,
+                55.0,
+                35.0
+            ],
+            "grip": "overhand",
+            "execution": "simultaneous",
+            "equipment": "machine"
+        },
+        {
+            "exercise_name": "incline bench press",
+            "reps": [
+                4,
+                8,
+                8,
+                4
+            ],
+            "weight": [
+                50.0,
+                40.0,
+                40.0,
+                30.0
+            ],
+            "grip": "overhand",
+            "execution": "simultaneous",
+            "equipment": "smith"
+        },
+        {
+            "exercise_name": "back extension",
+            "reps": [
+                12
+            ],
+            "weight": [
+                24.0
+            ],
+            "grip": "neutral",
+            "execution": "simultaneous",
+            "equipment": "dumbell"
+        }
+    ]
+}

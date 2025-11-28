@@ -1,5 +1,5 @@
 {
-    "date": "2024-11-23",
+    "date": "2025-11-22",
     "exercises": [
         {
             "exercise_name": "Bench Press",

@@ -1,5 +1,5 @@
 {
-    "date": "2024-11-16",
+    "date": "2025-11-23",
     "exercises": [
         {
             "exercise_name": "Bench Press",
@@ -10,7 +10,7 @@
             ],
             "weight": [
                 50,
-                50,
+                55,
                 60
             ]
         },
