@@ -1,4 +1,5 @@
 class Muscle:
+    # Represents a muscle group and tracks training data.
     def __init__(self, name):
         self.name = name
         self.worked_sets = 0 #maybe not needed
@@ -25,6 +26,7 @@ class Muscle:
             "volume": total_volume
         })
 
+    #Helps print muscle summary
     def __str__(self):
         return (
             f"{self.name.capitalize()}: "
@@ -82,7 +84,7 @@ def get_all_muscles():
 # ----------------- Exercise Classes -----------------
 
 class Exercise:
-    """Base class for all exercises (provides consistent __repr__ and shared structure)."""
+    """Base class for all exercises (provides consistent __repr__)"""
 
     def __repr__(self):
         return f"{self.__class__.__name__}(equipment='{self.equipment}', grip='{self.grip}', execution='{self.execution}')"
