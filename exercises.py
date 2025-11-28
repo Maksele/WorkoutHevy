@@ -94,7 +94,7 @@ class BenchPress(Exercise):
     usual_equipment = ["barbell", "dumbbell", "machine"]
 
     def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "Bench Press"
+        self.name = "bench press"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -116,7 +116,7 @@ class InclineBenchPress(Exercise):
     usual_equipment = ["barbell", "dumbbell", "machine"]
 
     def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "Incline Bench Press"
+        self.name = "incline bench press"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -138,7 +138,7 @@ class ChestFly(Exercise):
     usual_equipment = ["dumbbell", "machine", "cable"]
 
     def __init__(self, equipment="dumbbell", grip="neutral", execution="simultaneous"):
-        self.name = "Chest Fly"
+        self.name = "chest fly"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -160,7 +160,7 @@ class PullUp(Exercise):
     usual_equipment = ["bodyweight", "assisted machine"]
 
     def __init__(self, equipment="bodyweight", grip="standard", execution="simultaneous"):
-        self.name = "Pull-Up"
+        self.name = "pull-up"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -182,7 +182,7 @@ class BarbellRow(Exercise):
     usual_equipment = ["barbell", "dumbbell"]
 
     def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "Barbell Row"
+        self.name = "barbell row"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -204,7 +204,7 @@ class ShoulderPress(Exercise):
     usual_equipment = ["barbell", "dumbbell", "machine"]
 
     def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "Shoulder Press"
+        self.name = "shoulder press"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -226,7 +226,7 @@ class BicepCurl(Exercise):
     usual_equipment = ["dumbbell", "barbell", "cable"]
 
     def __init__(self, equipment="dumbbell", grip="standard", execution="simultaneous"):
-        self.name = "Bicep Curl"
+        self.name = "bicep curl"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -248,7 +248,7 @@ class TricepPushdown(Exercise):
     usual_equipment = ["cable", "band"]
 
     def __init__(self, equipment="cable", grip="standard", execution="simultaneous"):
-        self.name = "Tricep Pushdown"
+        self.name = "tricep pushdown"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -270,7 +270,7 @@ class Squat(Exercise):
     usual_equipment = ["barbell", "dumbbell", "machine"]
 
     def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "Squat"
+        self.name = "squat"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -292,7 +292,7 @@ class LegPress(Exercise):
     usual_equipment = ["machine"]
 
     def __init__(self, equipment="machine", grip="standard", execution="simultaneous"):
-        self.name = "Leg Press"
+        self.name = "leg press"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -314,7 +314,7 @@ class Lunge(Exercise):
     usual_equipment = ["dumbbell", "barbell", "bodyweight"]
 
     def __init__(self, equipment="dumbbell", grip="standard", execution="sequential"):
-        self.name = "Lunge"
+        self.name = "lunge"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -336,7 +336,7 @@ class RomanianDeadlift(Exercise):
     usual_equipment = ["barbell", "dumbbell"]
 
     def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "Romanian Deadlift"
+        self.name = "romanian deadlift"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -358,7 +358,7 @@ class HipThrust(Exercise):
     usual_equipment = ["barbell", "machine", "bodyweight"]
 
     def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "Hip Thrust"
+        self.name = "hip thrust"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -380,7 +380,7 @@ class CalfRaise(Exercise):
     usual_equipment = ["machine", "barbell", "dumbbell"]
 
     def __init__(self, equipment="machine", grip="standard", execution="simultaneous"):
-        self.name = "Calf Raise"
+        self.name = "calf raise"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -402,7 +402,7 @@ class PreacherCurl(Exercise):
     usual_equipment = ["barbell", "dumbbell"]
 
     def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "Preacher Curl"
+        self.name = "preacher curl"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -424,7 +424,7 @@ class DumbbellRow(Exercise):
     usual_equipment = ["dumbbell", "cable"]
 
     def __init__(self, equipment="dumbbell", grip="neutral", execution="sequential"):
-        self.name = "Dumbbell Row"
+        self.name = "dumbbell row"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -446,7 +446,7 @@ class Shrugs(Exercise):
     usual_equipment = ["dumbbell", "barbell"]
 
     def __init__(self, equipment="dumbbell", grip="neutral", execution="simultaneous"):
-        self.name = "Shrugs"
+        self.name = "shrugs"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -468,7 +468,7 @@ class Deadlift(Exercise):
     usual_equipment = ["barbell", "dumbbell"]
 
     def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "Deadlift"
+        self.name = "deadlift"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution
@@ -490,7 +490,7 @@ class OverheadPress(Exercise):
     usual_equipment = ["dumbbell", "barbell", "machine"]
 
     def __init__(self, equipment="dumbbell", grip="neutral", execution="simultaneous"):
-        self.name = "Overhead Press"
+        self.name = "overhead press"
         self.equipment = equipment
         self.grip = grip
         self.execution = execution

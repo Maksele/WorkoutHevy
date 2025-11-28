@@ -121,6 +121,104 @@ for filename in sorted(os.listdir(past_workouts_folder)):
             #add the exercise data to all_exercises_data, for future data analysis
             all_exercises_data.append(exercise_obj)
 
+def add_workout_session():
+    """
+    Adds a new workout session to the past_workouts folder.
+    exercises_performed: list of dicts with keys: exercise_name, reps (list), weight (list), grip (optional), execution (optional), equipment (optional)
+    """
+    parameter_not_valid = True
+    while parameter_not_valid:
+        parameter_not_valid = False
+        date = input("Enter date (YYYY-MM-DD) or leave blank for today: ")
+        if date == "":
+            date = datetime.now()
+        else:
+            try:
+                date = datetime.strptime(date, "%Y-%m-%d")
+            except ValueError:
+                print("Invalid date format. Please use YYYY-MM-DD.")
+                parameter_not_valid = True
+    
+    parameter_not_valid = True
+    while parameter_not_valid:  
+        parameter_not_valid = False
+        num_exercises = input("Enter number of exercises performed: ")
+        try:
+            num_exercises = int(num_exercises)
+            if num_exercises <= 0:
+                print("Number of exercises must be positive.")
+                parameter_not_valid = True
+        except ValueError:
+            print("Invalid number. Please enter a positive integer.")
+            parameter_not_valid = True
+
+    parameter_not_valid = True
+
+    exercises_performed = []
+
+    for i in range(num_exercises):
+        print(f"Exercise {i+1}:")
+        
+        while parameter_not_valid:  
+            parameter_not_valid = False
+            exercise_name = input("  Enter exercise name: ").lower()
+            if exercise_name not in all_exercises_dict:
+                print("  Unknown exercise. Please enter a valid exercise name.")
+                parameter_not_valid = True
+        parameter_not_valid = True
+
+        exercise_obj = all_exercises_dict[exercise_name]
+
+        while parameter_not_valid:
+            parameter_not_valid = False
+            reps_input = input("  Enter reps (comma-separated): ")
+            weight_input = input("  Enter weight (comma-separated): ")
+        
+            try:
+                reps = [int(r.strip()) for r in reps_input.split(",")]
+                weight = [float(w.strip()) for w in weight_input.split(",")]
+                if len(reps) != len(weight):
+                    print("  Number of reps and weights must match.")
+                    parameter_not_valid = True
+            except ValueError:
+                parameter_not_valid = True
+                print("  Invalid input for reps or weight. Please enter numbers only.")
+        parameter_not_valid = True
+
+        grip = input("  Enter grip [neutral / reverse...] (optional, press Enter to skip): ")
+        execution = input("  Enter execution [simultaneous / sequential or custom] (optional, press Enter to skip): ")
+        equipment = input("  Enter equipment [dumbell / barbell / cable / machine / freeweight...] (optional, press Enter to skip): ")
+        
+        exercise_data = {
+            "exercise_name": exercise_name,
+            "reps": reps,
+            "weight": weight
+        }
+        if grip:
+            exercise_data["grip"] = grip
+        if execution:
+            exercise_data["execution"] = execution
+        if equipment:
+            exercise_data["equipment"] = equipment
+        
+        exercises_performed.append(exercise_data)
+    
+    
+    
+
+    
+    session_data = {
+        "date": date,
+        "exercises": exercises_performed
+    }
+    print(session_data)
+
+    filename = f"{date.strftime('%Y-%m-%d')}.txt"
+    filepath = os.path.join(past_workouts_folder, filename)
+    with open(filepath, "w") as f:
+        json.dump(session_data, f, indent=4)
+
+
 def help(command=None):
     if command is None:
         print("Available commands:")
