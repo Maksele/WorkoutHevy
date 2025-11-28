@@ -89,11 +89,33 @@ class Exercise:
     def __repr__(self):
         return f"{self.__class__.__name__}(equipment='{self.equipment}', grip='{self.grip}', execution='{self.execution}')"
 
+    def train(self, date, reps, weight):
+        for m in self.muscles:
+            m.train(reps, weight, date)
+        sets = len(reps)
+        total_volume = [r * w for r, w in zip(reps, weight)]
+        self.history.append({
+            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
+            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
+        })
+    
+
+class BackExtension(Exercise):
+    usual_equipment = ["bodyweight", "dumbell", "barbell", "machine"]
+
+    def __init__(self, equipment="dumbell", grip="neutral", execution="simultaneous"):
+        self.name = "back extension"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [lower_back, glutes, hamstrings]
+        self.history = []
+
 
 class BenchPress(Exercise):
-    usual_equipment = ["barbell", "dumbbell", "machine"]
+    usual_equipment = ["barbell", "dumbbell", "machine", "smith"]
 
-    def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
+    def __init__(self, equipment="barbell", grip="overhand", execution="simultaneous"):
         self.name = "bench press"
         self.equipment = equipment
         self.grip = grip
@@ -101,131 +123,11 @@ class BenchPress(Exercise):
         self.muscles = [chest, triceps, shoulders]
         self.history = []
 
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
-class InclineBenchPress(Exercise):
-    usual_equipment = ["barbell", "dumbbell", "machine"]
-
-    def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "incline bench press"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [chest, triceps, shoulders]
-        self.history = []
-
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
-class ChestFly(Exercise):
-    usual_equipment = ["dumbbell", "machine", "cable"]
-
-    def __init__(self, equipment="dumbbell", grip="neutral", execution="simultaneous"):
-        self.name = "chest fly"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [chest, shoulders]
-        self.history = []
-
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
-class PullUp(Exercise):
-    usual_equipment = ["bodyweight", "assisted machine"]
-
-    def __init__(self, equipment="bodyweight", grip="standard", execution="simultaneous"):
-        self.name = "pull-up"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [upper_back, biceps]
-        self.history = []
-
-    def train(self, date, reps, weight=None):
-        for m in self.muscles:
-            m.train([reps], [0] if weight is None else [weight], date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
-class BarbellRow(Exercise):
-    usual_equipment = ["barbell", "dumbbell"]
-
-    def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "barbell row"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [upper_back, biceps, shoulders]
-        self.history = []
-
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
-class ShoulderPress(Exercise):
-    usual_equipment = ["barbell", "dumbbell", "machine"]
-
-    def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "shoulder press"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [shoulders, triceps]
-        self.history = []
-
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
 
 class BicepCurl(Exercise):
     usual_equipment = ["dumbbell", "barbell", "cable"]
 
-    def __init__(self, equipment="dumbbell", grip="standard", execution="simultaneous"):
+    def __init__(self, equipment="dumbbell", grip="underhand", execution="simultaneous"):
         self.name = "bicep curl"
         self.equipment = equipment
         self.grip = grip
@@ -233,21 +135,238 @@ class BicepCurl(Exercise):
         self.muscles = [biceps]
         self.history = []
 
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
+
+class CalfRaise(Exercise):
+    usual_equipment = ["machine", "barbell", "dumbbell", "smith"]
+
+    def __init__(self, equipment="machine", grip="standard", execution="simultaneous"):
+        self.name = "calf raise"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [calves]
+        self.history = []
+
+
+class ChestFly(Exercise):
+    usual_equipment = ["dumbbell", "machine", "cable"]
+
+    def __init__(self, equipment="dumbbell", grip="overhand", execution="simultaneous"):
+        self.name = "chest fly"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [chest, shoulders]
+        self.history = []
+
+
+class Deadlift(Exercise):
+    usual_equipment = ["barbell", "dumbbell"]
+
+    def __init__(self, equipment="barbell", grip="overhand", execution="simultaneous"):
+        self.name = "deadlift"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [lower_back, glutes, hamstrings, quads]
+        self.history = []
+
+
+class HipThrust(Exercise):
+    usual_equipment = ["barbell", "machine", "bodyweight"]
+
+    def __init__(self, equipment="barbell", grip="overhand", execution="simultaneous"):
+        self.name = "hip thrust"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [glutes, hamstrings]
+        self.history = []
+
+
+class InclineBenchPress(Exercise):
+    usual_equipment = ["barbell", "dumbbell", "machine", "smith"]
+
+    def __init__(self, equipment="barbell", grip="overhand", execution="simultaneous"):
+        self.name = "incline bench press"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [chest, triceps, shoulders]
+        self.history = []
+
+
+class LateralRaise(Exercise):
+    usual_equipment = ["dumbbell", "cable", "machine"]
+
+    def __init__(self, equipment="cable", grip="overhand", execution="simultaneous"):
+        self.name = "lateral raise"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [shoulders]
+        self.history = []
+
+
+class LegPress(Exercise):
+    usual_equipment = ["machine"]
+
+    def __init__(self, equipment="machine", grip="standard", execution="simultaneous"):
+        self.name = "leg press"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [quads, glutes, hamstrings]
+        self.history = []
+
+
+class Lunge(Exercise):
+    usual_equipment = ["dumbbell", "barbell", "bodyweight"]
+
+    def __init__(self, equipment="dumbbell", grip="neutral", execution="sequential"):
+        self.name = "lunge"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [quads, glutes, hamstrings]
+        self.history = []
+
+
+class OverheadPress(Exercise):
+    usual_equipment = ["dumbbell", "barbell", "machine", "smith"]
+
+    def __init__(self, equipment="dumbbell", grip="overhand", execution="simultaneous"):
+        self.name = "overhead press"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [shoulders, triceps]
+        self.history = []
+
+
+class PreacherCurl(Exercise):
+    usual_equipment = ["barbell", "dumbbell"]
+
+    def __init__(self, equipment="barbell", grip="underhand", execution="simultaneous"):
+        self.name = "preacher curl"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [biceps, forearms]
+        self.history = []
+
+
+class Pulldown(Exercise):
+    usual_equipment = ["cable", "machine"]
+
+    def __init__(self, equipment="cable", grip="overhand wide", execution="simultaneous"):
+        self.name = "pulldown"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [upper_back, biceps]
+        self.history = []
+
+
+class PullUp(Exercise):
+    usual_equipment = ["bodyweight", "assisted machine"]
+
+    def __init__(self, equipment="bodyweight", grip="overhand", execution="simultaneous"):
+        self.name = "pull-up"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [upper_back, biceps]
+        self.history = []
+
+
+class ReverseFly(Exercise):
+    usual_equipment = ["cable", "machine", "dumbbell"]
+
+    def __init__(self, equipment="cable", grip="overhand", execution="simultaneous"):
+        self.name = "reverse fly"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [upper_back, shoulders]
+        self.history = []
+
+
+class RomanianDeadlift(Exercise):
+    usual_equipment = ["barbell", "dumbbell", "smith"]
+
+    def __init__(self, equipment="barbell", grip="overhand", execution="simultaneous"):
+        self.name = "romanian deadlift"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [hamstrings, glutes, lower_back]
+        self.history = []
+
+
+class SeatedRow(Exercise):
+    usual_equipment = ["dumbbell", "cable", "machine"]
+
+    def __init__(self, equipment="dumbbell", grip="neutral", execution="sequential"):
+        self.name = "dumbbell row"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [upper_back, biceps, traps]
+        self.history = []
+
+
+class ShoulderPress(Exercise):
+    usual_equipment = ["barbell", "dumbbell", "machine", "smith"]
+
+    def __init__(self, equipment="dumbell", grip="overhand", execution="simultaneous"):
+        self.name = "shoulder press"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [shoulders, triceps]
+        self.history = []
+
+
+class Shrugs(Exercise):
+    usual_equipment = ["dumbbell", "barbell"]
+
+    def __init__(self, equipment="dumbbell", grip="neutral", execution="simultaneous"):
+        self.name = "shrugs"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [traps]
+        self.history = []
+
+
+class Squat(Exercise):
+    usual_equipment = ["barbell", "dumbbell", "machine", "smith"]
+
+    def __init__(self, equipment="barbell", grip="overhand", execution="simultaneous"):
+        self.name = "squat"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [quads, glutes, hamstrings]
+        self.history = []
+
+
+class StandingRow(Exercise):
+    usual_equipment = ["Barbell", "Dumbbell", "smith"]
+    def __init__(self, equipment="Barbell", grip="overhand", execution="simultaneous"):
+        self.name = "standing row"
+        self.equipment = equipment
+        self.grip = grip
+        self.execution = execution
+        self.muscles = [upper_back, biceps, traps]
+        self.history = []
 
 
 class TricepPushdown(Exercise):
     usual_equipment = ["cable", "band"]
 
-    def __init__(self, equipment="cable", grip="standard", execution="simultaneous"):
+    def __init__(self, equipment="cable", grip="neutral", execution="simultaneous"):
         self.name = "tricep pushdown"
         self.equipment = equipment
         self.grip = grip
@@ -266,267 +385,29 @@ class TricepPushdown(Exercise):
         })
 
 
-class Squat(Exercise):
-    usual_equipment = ["barbell", "dumbbell", "machine"]
-
-    def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "squat"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [quads, glutes, hamstrings]
-        self.history = []
-
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
-class LegPress(Exercise):
-    usual_equipment = ["machine"]
-
-    def __init__(self, equipment="machine", grip="standard", execution="simultaneous"):
-        self.name = "leg press"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [quads, glutes, hamstrings]
-        self.history = []
-
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
-class Lunge(Exercise):
-    usual_equipment = ["dumbbell", "barbell", "bodyweight"]
-
-    def __init__(self, equipment="dumbbell", grip="standard", execution="sequential"):
-        self.name = "lunge"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [quads, glutes, hamstrings]
-        self.history = []
-
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
-class RomanianDeadlift(Exercise):
-    usual_equipment = ["barbell", "dumbbell"]
-
-    def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "romanian deadlift"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [hamstrings, glutes, lower_back]
-        self.history = []
-
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
-class HipThrust(Exercise):
-    usual_equipment = ["barbell", "machine", "bodyweight"]
-
-    def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "hip thrust"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [glutes, hamstrings]
-        self.history = []
-
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
-class CalfRaise(Exercise):
-    usual_equipment = ["machine", "barbell", "dumbbell"]
-
-    def __init__(self, equipment="machine", grip="standard", execution="simultaneous"):
-        self.name = "calf raise"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [calves]
-        self.history = []
-
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
-class PreacherCurl(Exercise):
-    usual_equipment = ["barbell", "dumbbell"]
-
-    def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "preacher curl"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [biceps, forearms]
-        self.history = []
-
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
-class DumbbellRow(Exercise):
-    usual_equipment = ["dumbbell", "cable"]
-
-    def __init__(self, equipment="dumbbell", grip="neutral", execution="sequential"):
-        self.name = "dumbbell row"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [upper_back, biceps, traps]
-        self.history = []
-
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
-class Shrugs(Exercise):
-    usual_equipment = ["dumbbell", "barbell"]
-
-    def __init__(self, equipment="dumbbell", grip="neutral", execution="simultaneous"):
-        self.name = "shrugs"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [traps]
-        self.history = []
-
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
-class Deadlift(Exercise):
-    usual_equipment = ["barbell", "dumbbell"]
-
-    def __init__(self, equipment="barbell", grip="standard", execution="simultaneous"):
-        self.name = "deadlift"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [lower_back, glutes, hamstrings, quads]
-        self.history = []
-
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
-class OverheadPress(Exercise):
-    usual_equipment = ["dumbbell", "barbell", "machine"]
-
-    def __init__(self, equipment="dumbbell", grip="neutral", execution="simultaneous"):
-        self.name = "overhead press"
-        self.equipment = equipment
-        self.grip = grip
-        self.execution = execution
-        self.muscles = [shoulders, triceps]
-        self.history = []
-
-    def train(self, date, reps, weight):
-        for m in self.muscles:
-            m.train(reps, weight, date)
-        sets = len(reps)
-        total_volume = [r * w for r, w in zip(reps, weight)]
-        self.history.append({
-            "date": date, "reps": reps, "weight": weight, "sets": sets, "volume": total_volume,
-            "equipment": self.equipment, "grip": self.grip, "execution": self.execution
-        })
-
-
 def get_all_exercises():
     return [
+        BackExtension(),
         BenchPress(),
-        InclineBenchPress(),
-        ChestFly(),
-        PullUp(),
-        BarbellRow(),
-        ShoulderPress(),
         BicepCurl(),
-        TricepPushdown(),
-        Squat(),
+        CalfRaise(),
+        ChestFly(),
+        Deadlift(),
+        HipThrust(),
+        InclineBenchPress(),
+        LateralRaise(),
         LegPress(),
         Lunge(),
-        RomanianDeadlift(),
-        HipThrust(),
-        CalfRaise(),
+        OverheadPress(),
         PreacherCurl(),
-        DumbbellRow(),
+        Pulldown(),
+        PullUp(),
+        ReverseFly(),
+        RomanianDeadlift(),
+        SeatedRow(),
+        ShoulderPress(),
         Shrugs(),
-        Deadlift(),
-        OverheadPress()
+        Squat(),
+        StandingRow(),
+        TricepPushdown()
     ]
