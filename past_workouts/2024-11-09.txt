@@ -1,0 +1,59 @@
+{
+    "date": "2024-11-09",
+    "exercises": [
+        {
+            "exercise_name": "Bench Press",
+            "reps": [
+                10,
+                8,
+                6
+            ],
+            "weight": [
+                50,
+                50,
+                55
+            ]
+        },
+        {
+            "exercise_name": "Squat",
+            "reps": [
+                10,
+                8,
+                6
+            ],
+            "weight": [
+                80,
+                85,
+                90
+            ]
+        },
+        {
+            "exercise_name": "Preacher Curl",
+            "reps": [
+                8,
+                8,
+                8
+            ],
+            "weight": [
+                10,
+                12,
+                14
+            ],
+	    "grip": "reverse"
+        },
+        {
+            "exercise_name": "Overhead Press",
+            "reps": [
+                12,
+                10,
+                8
+            ],
+            "weight": [
+                30,
+                35,
+                40
+            ],
+	    "equipment": "dumbbell"
+        }
+    ]
+}
