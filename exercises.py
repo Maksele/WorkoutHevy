@@ -34,6 +34,10 @@ class Muscle:
             f"{self.worked_reps} reps, "
             f"{self.worked_volume} kg total"
         )
+    
+    #To print muscle object prettier
+    def __repr__(self):
+        return f"Muscle(name='{self.name}')"
 
 
 # ----------------- Create all muscles based on muscle group (Maybe later even split them into muscle heads?) -----------------
@@ -87,7 +91,7 @@ class Exercise:
     """Base class for all exercises (provides consistent __repr__)"""
 
     def __repr__(self):
-        return f"{self.__class__.__name__}"
+        return f"{self.__class__.__name__}('{self.name}')"
 
     def train(self, date, reps, weight):
         for m in self.muscles:

@@ -4,7 +4,7 @@ import os
 import matplotlib.pyplot as plt
 import code
 from datetime import datetime, timedelta
-
+from pprint import pprint
 
 
 past_workouts_folder = "past_workouts"  # folder containing all {date}.txt files
@@ -230,7 +230,7 @@ def help(command=None):
         print(" - all_exercises_dict: dictionary of all exercises by name")
         print("Type help('command_name') for more details.")
 
-    elif command == "filter_exercises":
+    elif command == "filter_exercises" or command == "filter_exercises()":
         print("filter_exercises(exercise_list, equipment=None, grip=None, execution=None)")
         print("Filters the given exercise_list based on the provided criteria.")
         print("Parameters:")
@@ -240,7 +240,7 @@ def help(command=None):
         print(" - execution: filter by execution type (simultanious, sequential) (string)")
         print("Returns a list of Exercise objects that match the criteria.")
 
-    elif command == "plot_progression":
+    elif command == "plot_progression" or command == "plot_progression()":
         print("plot_progression(muscle_or_exercise, metric='weight')")
         print("Plots progression of a given metric over time for a muscle or exercise.")
         print("Parameters:")
@@ -248,13 +248,13 @@ def help(command=None):
         print(" - metric: metric to plot ('weight', 'reps', 'sets', 'volume') (string)")
         print("Displays a plot of the specified metric over time.")
 
-    elif command == "all_muscles_dict":
+    elif command == "all_muscles_dict" or command == "all_muscles_dict()":
         print("all_muscles_dict: dictionary of all muscles by name")
-        print(all_muscles_dict)
+        pprint(all_muscles_dict)
 
-    elif command == "all_exercises_dict":
+    elif command == "all_exercises_dict" or command == "all_exercises_dict()":
         print("all_exercises_dict: dictionary of all exercises by name")
-        print(all_exercises_dict)
+        pprint(all_exercises_dict)
 
     else:
         print(f"No help available for '{command}'")
